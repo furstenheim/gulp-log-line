@@ -1,0 +1,28 @@
+{
+  "name": "gulp-log-liner",
+  "version": "1.0.0",
+  "description": "Improve your logs with line and file info",
+  "main": "index.js",
+  "scripts": {
+    "example": "gulp --gulpfile examples/gulpfile.js",
+    "test": "test"
+  },
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "log",
+    "winston",
+    "debug"
+  ],
+  "author": "gf",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "split2": "^2.0.1",
+    "through2": "^2.0.1"
+  }
+}
