@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "example": "gulp --gulpfile example/gulpfile.js",
-    "test": "test"
+    "test": "mocha"
   },
   "keywords": [
     "gulp",
@@ -17,8 +17,10 @@
   "author": "gf",
   "license": "MIT",
   "devDependencies": {
+    "concat-stream": "^1.5.1",
     "gulp": "^3.9.1",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "should": "^8.3.1"
   },
   "dependencies": {
     "gulp-util": "^3.0.7",

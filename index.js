@@ -19,9 +19,9 @@ function gulpLogLine(loggers) {
             return callback(null, file)
         }
         //TODO there should be a better way to find relative path
-        var filePath = file.path.slice(file.base.length)
+        var filePath = file.path.slice(file.cwd.length + 1)
         if (file.isBuffer()) {
-            file.contents = new Buffer(file.contents.toString().split('\n').map(function (line, lineNumber) {return replaceLine(line, lineNumber + 1, filePath, parsedLoggers)}).join('\n'))
+            file.contents = new Buffer(file.contents.toString().split('\n').map(function (line, lineNumber) {return replaceLine(line, lineNumber + 1, filePath, parsedLoggers)}).join('\n') + '\n')
         }
         if (file.isStream()) {
             file.contents = file.contents.pipe(split()).pipe(logLineStream(filePath, parsedLoggers))
@@ -60,7 +60,6 @@ function parseParams(mArray) {
         if (typeof item === 'string') {
             return new RegExp(item + '\\(', 'g')
         }
-        console.log(item)
         throw new PluginError(PLUGIN_NAME, 'Params must be strings or regexp')
 
     })
