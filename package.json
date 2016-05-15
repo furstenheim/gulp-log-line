@@ -1,10 +1,10 @@
 {
-  "name": "gulp-log-liner",
+  "name": "gulp-log-line",
   "version": "1.0.0",
   "description": "Improve your logs with line and file info",
   "main": "index.js",
   "scripts": {
-    "example": "gulp --gulpfile examples/gulpfile.js",
+    "example": "gulp --gulpfile example/gulpfile.js",
     "test": "test"
   },
   "keywords": [

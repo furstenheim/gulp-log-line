@@ -1,10 +1,10 @@
-module.exports = gulpLogLiner;
+module.exports = gulpLogLine;
 
 var gutil = require('gulp-util');
 var through = require('through2')
 var split = require('split2')
 var PluginError = gutil.PluginError;
-const PLUGIN_NAME = 'gulp-log-liner'
+const PLUGIN_NAME = 'gulp-log-line'
 //TODO handle buffers nicely. To avoid overhead of decoding and encoding
 
 /**
@@ -12,7 +12,7 @@ const PLUGIN_NAME = 'gulp-log-liner'
  * @param {String[]|RegExp[]} loggers List of logger functions use. e.g '[winston.log, console.error..]'
  * Strings are replaced globally, regular expressions are replaced as provided
  */
-function gulpLogLiner(loggers) {
+function gulpLogLine(loggers) {
     var parsedLoggers = parseParams(loggers)
     return through.obj(function(file, enc, callback) {
         if (file.isNull()) {
@@ -24,14 +24,13 @@ function gulpLogLiner(loggers) {
             file.contents = new Buffer(file.contents.toString().split('\n').map(function (line, lineNumber) {return replaceLine(line, lineNumber + 1, filePath, parsedLoggers)}).join('\n'))
         }
         if (file.isStream()) {
-            //file.contents = file.contents.pipe(logLinerStream(filePath, parsedLoggers))
-            file.contents = file.contents.pipe(split()).pipe(logLinerStream(filePath, parsedLoggers))
+            file.contents = file.contents.pipe(split()).pipe(logLineStream(filePath, parsedLoggers))
         }
         callback(null, file)
     })
 }
 
-function logLinerStream(filePath, loggers) {
+function logLineStream(filePath, loggers) {
     var lineNumber = 0;
     var stream = through(function(data, enc, done){
         lineNumber++;
