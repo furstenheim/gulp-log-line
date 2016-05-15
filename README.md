@@ -5,7 +5,7 @@ Log file and line number without the extra cost of reading the stack.
 ## Usage
 ```
 var gulp = require('gulp');
-var logLine = require('../index.js');
+var logLine = require('gulp-log-line');
 gulp.task('line-log', function() {
     return gulp.src("file.js", {buffer : true})
     //Write here the loggers you use.
