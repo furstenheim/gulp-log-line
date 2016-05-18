@@ -1,5 +1,7 @@
 #Gulp log-line
 
+[![Build Status](https://travis-ci.org/furstenheim/gulp-log-line.svg?branch=master)](https://travis-ci.org/furstenheim/gulp-log-line)
+
 Log file and line number without the extra cost of reading the stack.
 
 ## Usage
