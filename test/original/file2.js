@@ -1,0 +1,2 @@
+consolealog('a');
+consolealog('b');

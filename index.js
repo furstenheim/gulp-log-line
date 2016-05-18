@@ -58,9 +58,14 @@ function parseParams(mArray) {
             return item
         }
         if (typeof item === 'string') {
-            return new RegExp(item + '\\(', 'g')
+            return new RegExp(escapeRegExp(item + '('), 'g')
         }
         throw new PluginError(PLUGIN_NAME, 'Params must be strings or regexp')
 
     })
+}
+
+/**http://stackoverflow.com/questions/1144783/replacing-all-occurrences-of-a-string-in-javascript**/
+function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
